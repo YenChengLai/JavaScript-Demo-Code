@@ -42,7 +42,7 @@ console.log(promiseA().then(
     }
 ));
 
-
+// then方法如果沒有定義任何處理，會拿到一個空的Promise物件
 let promise = new Promise(function (resolve, reject) {
     setTimeout(function () {
         resolve('triggered');
@@ -50,10 +50,3 @@ let promise = new Promise(function (resolve, reject) {
 }).then();
 
 console.log(promise.then());
-
-let promiseThen = new Promise(function (resolve) {
-    resolve('Hi');
-});
-
-console.log(promiseThen.then(success => { console.log(success); }));
-
