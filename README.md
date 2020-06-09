@@ -1,5 +1,5 @@
 # JavaScript-Demo-Code
-# English:
+# English
 JavaScript Codes for Demo Purposes
 
 This repository contains JavaScript Codes with demo purposes.
