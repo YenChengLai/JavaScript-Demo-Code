@@ -1,6 +1,8 @@
 # JavaScript-Demo-Code
+
 # English
 JavaScript Codes for Demo Purposes
+Handout directory: JavaScript-Demo-Code/handout
 
 This repository contains JavaScript Codes with demo purposes.
 Mainly focuses on:
@@ -25,6 +27,9 @@ Beyond:
 
 
 # Traditional Chinese (zh_TW)
+觀念說明用程式碼
+講義路徑: JavaScript-Demo-Code/handout
+
 本repository中的內容為示範用的JavaScript程式碼，主要針對以下主題：
 
 ES5:
