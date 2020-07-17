@@ -20,11 +20,11 @@ ES6:
 2. Template literal
 3. Arrow function
 4. Spread/Rest operator
-5. Array functions
-6. Promise, async, and await
+5. Promise, async, and await
 
 Beyond:
-1. Functional Programming
+1. Useful APIs of Array.prototype
+2. Functional Programming
 
 
 # Traditional Chinese (zh_TW)
@@ -46,8 +46,8 @@ ES6:
 2. 樣板文字值
 3. 箭頭函式
 4. 展開/其餘運算子
-5. 陣列的常用方法
 6. Promise、async和await
 
 進階:
-1. 函數式編程
+1. 陣列的常用方法
+2. 函數式編程
