@@ -23,8 +23,8 @@
             border-radius: 100%
         }
     </style>
+    <script src="./calculator.js"></script>
 </head>
-
 <body>
     <div class="row">
         <div class="col-md-4"></div>
@@ -40,75 +40,75 @@
             <div class="row m-10">
                 <div class="col-md-1"></div>
                 <div class="col-md-10 m-10" align="right">
-                    <span disabled style="color:white">0</span>
+                    <span disabled style="color:white" id="result">0</span>
                 </div>
                 <div class="col-md-1"></div>
             </div>
             <div class="row m-10">
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-light wd-85">AC</button>
+                    <button class="btn btn-light wd-85 notNumber" id="AC">AC</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-light wd-85">+/-</button>
+                    <button class="btn btn-light wd-85 notNumber" id="negative">+/-</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-light wd-85">%</button>
+                    <button class="btn btn-light wd-85 notNumber" id="percent">%</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-warning wd-85">÷</button>
-                </div>
-            </div>
-            <div class="row m-10">
-                <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">7</button>
-                </div>
-                <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">8</button>
-                </div>
-                <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">9</button>
-                </div>
-                <div class="col-md-3" align="center">
-                    <button class="btn btn-warning wd-85">x</button>
+                    <button class="btn btn-warning wd-85 notNumber" id="divide">÷</button>
                 </div>
             </div>
             <div class="row m-10">
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">4</button>
+                    <button class="btn btn-secondary wd-85 number" id="7">7</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">5</button>
+                    <button class="btn btn-secondary wd-85 number" id="8">8</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">6</button>
+                    <button class="btn btn-secondary wd-85 number" id="9">9</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-warning wd-85">-</button>
+                    <button class="btn btn-warning wd-85 notNumber" id="multiply">x</button>
                 </div>
             </div>
             <div class="row m-10">
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">1</button>
+                    <button class="btn btn-secondary wd-85 number" id="4">4</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">2</button>
+                    <button class="btn btn-secondary wd-85 number" id="5">5</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">3</button>
+                    <button class="btn btn-secondary wd-85 number" id="6">6</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-warning wd-85">+</button>
+                    <button class="btn btn-warning wd-85 notNumber" id="minus">-</button>
+                </div>
+            </div>
+            <div class="row m-10">
+                <div class="col-md-3" align="center">
+                    <button class="btn btn-secondary wd-85 number" id="1">1</button>
+                </div>
+                <div class="col-md-3" align="center">
+                    <button class="btn btn-secondary wd-85 number" id="2">2</button>
+                </div>
+                <div class="col-md-3" align="center">
+                    <button class="btn btn-secondary wd-85 number" id="3">3</button>
+                </div>
+                <div class="col-md-3" align="center">
+                    <button class="btn btn-warning wd-85 notNumber" id="add">+</button>
                 </div>
             </div>
             <div class="row m-10">
                 <div class="col-md-6" align="center">
-                    <button class="btn btn-secondary" style="width: 195px;">0</button>
+                    <button class="btn btn-secondary number" style="width: 195px;" id="0">0</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-secondary wd-85">.</button>
+                    <button class="btn btn-secondary wd-85 notNumber" id="point">.</button>
                 </div>
                 <div class="col-md-3" align="center">
-                    <button class="btn btn-warning wd-85">=</button>
+                    <button class="btn btn-warning wd-85 notNumber" id="equal">=</button>
                 </div>
             </div>
         </div>
