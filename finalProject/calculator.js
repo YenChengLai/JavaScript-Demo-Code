@@ -26,7 +26,7 @@ window.onload = () => {
     numbers.forEach(number => {
         let _self = number;
         _self.onclick = () => {
-            if (!Number(result.innerHTML) && result.innerHTML.charAt('.') > 0) {
+            if (!Number(result.innerHTML) && result.innerHTML.indexOf('.') < 0) {
                 result.innerHTML = _self.id;
             } else {
                 result.innerHTML += _self.id;
