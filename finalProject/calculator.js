@@ -52,7 +52,7 @@ window.onload = () => {
             } else {
                 result.innerHTML += _self.id;
             }
-            currentNumber = Number(result.innerHTML);
+            calculateArr.push(result.innerHTML);
             acButton.innerHTML = Number(result.innerHTML) ? 'C' : 'AC';
         }
     });
@@ -60,19 +60,23 @@ window.onload = () => {
     operators.forEach(operator => {
         operator.onclick = () => {
             isCalculating = true;
-            calculateArr.push(result.innerHTML);
             if (operatorArr.length) {
-                calculateArr.reduce((x, y, index) => {
-                    currentNumber = operation[operatorArr[index - 1]](x, y);
+                let last = 0;
+                calculateArr.forEach((cal, index) => {
+                    if (index) {
+                        currentNumber = operation[operatorArr[index - 1]](last, cal);
+                        last = currentNumber;
+                    } else {
+                        last = Number(cal);
+                    }
                 });
                 result.innerHTML = currentNumber;
             }
             operatorArr.push(operator.innerHTML);
-
         }
     });
 
     document.getElementById('equal').onclick = () => {
-        result.innerHTML = operation[operatorArr[0]](currentNumber, result.innerHTML);
+        result.innerHTML = operation[operatorArr[operatorArr.length - 1]](currentNumber, result.innerHTML);
     };
 }
