@@ -158,7 +158,7 @@ function Calculator() {
                     });
                 }
             }
-            asyncFunc(records);
+            asyncFunc(records.reverse());
         };
     }
 
