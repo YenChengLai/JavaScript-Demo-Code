@@ -47,7 +47,7 @@ window.onload = () => {
     numbers.forEach(number => {
         let _self = number;
         _self.onclick = () => {
-            if (!Number(result.innerHTML) && result.innerHTML.indexOf('.') < 0 || isCalculating || isNew) {
+            if (!Number(result.innerHTML) && result.innerHTML.indexOf('.') < 0 && !isCalculating || isNew) {
                 result.innerHTML = _self.id;
             } else {
                 result.innerHTML += _self.id;
@@ -75,6 +75,7 @@ window.onload = () => {
                 result.innerHTML = currentNumber;
             }
             operatorArr.push(operator.innerHTML);
+            isNew = true;
         }
     });
 
@@ -86,4 +87,4 @@ window.onload = () => {
         operatorArr = [];
         currentNumber = 0;
     };
-}
+}
