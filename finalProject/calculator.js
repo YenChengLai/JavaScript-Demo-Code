@@ -6,6 +6,7 @@ window.onload = () => {
     let calculateArr = [];
     let operatorArr = [];
     let isCalculating = false;
+    let isNew = false;
     const records = [];
     let currentNumber = 0;
 
@@ -39,27 +40,28 @@ window.onload = () => {
     }
 
     document.getElementById('point').onclick = () => {
-        result.innerHTML += '.';
+        if (result.innerHTML.indexOf('.') < 0)
+            result.innerHTML += '.';
     }
 
     numbers.forEach(number => {
         let _self = number;
-
         _self.onclick = () => {
-
-            if (!Number(result.innerHTML) && result.innerHTML.indexOf('.') < 0 || isCalculating) {
+            if (!Number(result.innerHTML) && result.innerHTML.indexOf('.') < 0 || isCalculating || isNew) {
                 result.innerHTML = _self.id;
             } else {
                 result.innerHTML += _self.id;
             }
-            calculateArr.push(result.innerHTML);
             acButton.innerHTML = Number(result.innerHTML) ? 'C' : 'AC';
+            isNew = false;
         }
     });
 
     operators.forEach(operator => {
         operator.onclick = () => {
+            calculateArr.push(result.innerHTML);
             isCalculating = true;
+            currentNumber = result.innerHTML;
             if (operatorArr.length) {
                 let last = 0;
                 calculateArr.forEach((cal, index) => {
@@ -78,5 +80,10 @@ window.onload = () => {
 
     document.getElementById('equal').onclick = () => {
         result.innerHTML = operation[operatorArr[operatorArr.length - 1]](currentNumber, result.innerHTML);
+        isCalculating = false;
+        isNew = true;
+        calculateArr = [];
+        operatorArr = [];
+        currentNumber = 0;
     };
-}
+}
