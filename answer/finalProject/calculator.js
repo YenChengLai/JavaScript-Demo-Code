@@ -101,6 +101,11 @@ function Calculator() {
         document.getElementById('getRecord').onclick = () => {
             console.log(this.getRecords()); // 取得所有紀錄的方法
             // 請由此開始作答
+            const promise = new Promise((res, rej) => {
+                setTimeout(() => {
+                    resolve();
+                }, 2000);
+            });
         };
     }
 
