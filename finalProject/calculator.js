@@ -132,6 +132,12 @@ function Calculator() {
 
         // 取得資料按鍵事件註冊
         document.getElementById('getRecord').onclick = () => {
+            document.querySelectorAll('.list-group-item').forEach((ele, index) => {
+                if (index) {
+                    ele.remove();
+                }
+            });
+            
             // 請由此開始作答
 
             // 作法 1: 使用Promise

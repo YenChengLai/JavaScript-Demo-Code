@@ -1,35 +1,30 @@
-// 畫面載入
-window.onload = () => {
-    new Calculator().init();
-}
-
 // 計算機主程式
-function Calculator() {
+class Calculator {
     // 所有的數字按鈕DOM物件
-    const numbers = document.querySelectorAll('.number');
+    numbers = document.querySelectorAll('.number');
     // 加減乘除按鈕DOM物件
-    const operators = document.querySelectorAll('.operator');
+    operators = document.querySelectorAll('.operator');
     // 呈現結果的span DOM物件
-    const result = document.getElementById('result');
+    result = document.getElementById('result');
     // 清空鍵DOM物件
-    const acButton = document.getElementById('AC');
+    acButton = document.getElementById('AC');
     // 計算紀錄清單DOM物件
-    const recordsList = document.getElementById('recordList');
+    recordsList = document.getElementById('recordList');
     // 使用者輸入的數字
-    let calculateArr = [];
+    calculateArr = [];
     // 使用者選的計算符
-    let operatorArr = [];
+    operatorArr = [];
     // 是否為計算狀態
-    let isCalculating = false;
+    isCalculating = false;
     // 是否為新數字
-    let isNew = false;
+    isNew = false;
     // 計算紀錄
-    const records = [];
+    records = [];
     // 當下數字
-    let currentNumber = 0;
+    currentNumber = 0;
 
     // 統一控管計算符
-    const operation = {
+    operation = {
         '+': (x, y) => Number(x) + Number(y),
         '-': (x, y) => Number(x) - Number(y),
         'x': (x, y) => Number(x) * Number(y),
@@ -37,10 +32,10 @@ function Calculator() {
     }
 
     // 初始
-    this.init = () => {
+    init = () => {
 
         // 清空
-        acButton.onclick = () => {
+        this.acButton.onclick = () => {
             result.innerHTML = '0';
             acButton.innerHTML = 'AC';
             calculateArr = [];
@@ -51,68 +46,68 @@ function Calculator() {
 
         // 正負號
         document.getElementById('negative').onclick = () => {
-            let value = result.innerHTML;
+            let value = this.result.innerHTML;
             if (value.startsWith('-')) {
-                result.innerHTML = value.substr(1, value.length);
+                this.result.innerHTML = value.substr(1, value.length);
             } else {
-                result.innerHTML = '-' + value;
+                this.result.innerHTML = '-' + value;
             }
         }
 
         // 百分比
         document.getElementById('percent').onclick = () => {
-            result.innerHTML = Number(result.innerHTML) / 100;
+            this.result.innerHTML = Number(this.result.innerHTML) / 100;
         }
 
         // 小數點
         document.getElementById('point').onclick = () => {
-            if (result.innerHTML.indexOf('.') < 0)
-                result.innerHTML += '.';
+            if (this.result.innerHTML.indexOf('.') < 0)
+                this.result.innerHTML += '.';
         }
 
         // 數字按鍵事件註冊
-        numbers.forEach(number => {
+        this.numbers.forEach(number => {
             let _self = number;
             _self.onclick = () => {
-                if (!Number(result.innerHTML) && result.innerHTML.indexOf('.') < 0 && !isCalculating || isNew) {
-                    result.innerHTML = _self.id;
+                if (!Number(this.result.innerHTML) && this.result.innerHTML.indexOf('.') < 0 && !this.isCalculating || this.isNew) {
+                    this.result.innerHTML = _self.id;
                 } else {
-                    result.innerHTML += _self.id;
+                    this.result.innerHTML += _self.id;
                 }
-                acButton.innerHTML = Number(result.innerHTML) ? 'C' : 'AC';
-                isNew = false;
+                this.acButton.innerHTML = Number(this.result.innerHTML) ? 'C' : 'AC';
+                this.isNew = false;
             }
         });
 
         // 計算符按鍵事件註冊
-        operators.forEach(operator => {
+        this.operators.forEach(operator => {
             operator.onclick = () => {
-                calculateArr.push(result.innerHTML);
-                isCalculating = true;
-                currentNumber = result.innerHTML;
-                if (operatorArr.length) {
+                this.calculateArr.push(result.innerHTML);
+                this.isCalculating = true;
+                this.currentNumber = result.innerHTML;
+                if (this.operatorArr.length) {
                     let last = 0;
-                    calculateArr.forEach((cal, index) => {
+                    this.calculateArr.forEach((cal, index) => {
                         if (index) {
-                            currentNumber = operation[operatorArr[index - 1]](last, cal);
-                            last = currentNumber;
+                            this.currentNumber = this.operation[this.operatorArr[index - 1]](last, cal);
+                            last = this.currentNumber;
                         } else {
                             last = Number(cal);
                         }
                     });
-                    result.innerHTML = currentNumber;
+                    this.result.innerHTML = this.currentNumber;
                 }
-                operatorArr.push(operator.innerHTML);
-                isNew = true;
+                this.operatorArr.push(operator.innerHTML);
+                this.isNew = true;
             }
         });
 
         // 等號按鈕事件註冊
         document.getElementById('equal').onclick = () => {
             // 呈現結果
-            calculateArr.push(result.innerHTML);
-            const calResult = operation[operatorArr[operatorArr.length - 1]](currentNumber, result.innerHTML);
-            result.innerHTML = calResult;
+            this.calculateArr.push(this.result.innerHTML);
+            const calResult = this.operation[this.operatorArr[this.operatorArr.length - 1]](this.currentNumber, this.result.innerHTML);
+            this.result.innerHTML = calResult;
 
             // 產生紀錄的DOM物件
             let li = document.createElement('li');
@@ -120,21 +115,27 @@ function Calculator() {
             li.innerHTML = this.setRecord(calResult);
 
             // 如果紀錄多於3筆
-            if (records.length >= 3) {
-                records.splice(0, 1);
+            if (this.records.length >= 3) {
+                this.records.splice(0, 1);
             }
-            records.push(li);
+            this.records.push(li);
 
             // 設定值還原
-            isCalculating = false;
-            isNew = true;
-            calculateArr = [];
-            operatorArr = [];
-            currentNumber = 0;
+            this.isCalculating = false;
+            this.isNew = true;
+            this.calculateArr = [];
+            this.operatorArr = [];
+            this.currentNumber = 0;
         };
 
         // 取得資料按鍵事件註冊
         document.getElementById('getRecord').onclick = () => {
+            document.querySelectorAll('.list-group-item').forEach((ele, index) => {
+                if (index) {
+                    ele.remove();
+                }
+            });
+
             // 請由此開始作答
 
             // 作法 1: 使用Promise
@@ -152,24 +153,26 @@ function Calculator() {
                 for (const data of dataArr) {
                     await new Promise(res => {
                         setTimeout(() => {
-                            recordsList.appendChild(data);
+                            this.recordsList.appendChild(data);
                             res();
                         }, 1000);
                     });
                 }
             }
-            asyncFunc(records.reverse());
+            asyncFunc(this.records.slice().reverse());
         };
     }
 
     // 算式字串串接
-    this.setRecord = (result) => {
+    setRecord = (result) => {
         let record = '';
-        calculateArr.forEach((cal, index) => {
-            record = record + cal + ' ' + (operatorArr[index] ? operatorArr[index] + ' ' : ' ');
+        this.calculateArr.forEach((cal, index) => {
+            record = record + cal + ' ' + (this.operatorArr[index] ? this.operatorArr[index] + ' ' : ' ');
         });
         record = record + '= ' + result;
         return record;
     }
 
 }
+
+export { Calculator };
