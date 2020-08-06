@@ -20,7 +20,9 @@ ES6:
 2. Template literal
 3. Arrow function
 4. Spread/Rest operator
-5. Promise, async, and await
+5. class
+6. import & export
+7. Promise, async, and await
 
 Beyond:
 1. Useful APIs of Array.prototype
@@ -46,7 +48,9 @@ ES6:
 2. 樣板文字值
 3. 箭頭函式
 4. 展開/其餘運算子
-6. Promise、async和await
+5. 類別
+6. 匯入與匯出 (模組化)
+7. Promise、async和await
 
 進階:
 1. 陣列的常用方法
