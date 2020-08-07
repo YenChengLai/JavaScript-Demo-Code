@@ -14,6 +14,7 @@ ES5:
 3. IIFE
 4. this
 5. Prototypal Inheritance, prototype chain, and Behavior Delegation
+6. Strict mode
 
 ES6:
 1. let and const
@@ -42,6 +43,7 @@ ES5:
 3. 立即執行函式表達式
 4. this關鍵字
 5. 原型繼承、原型鍊、行為委派
+6. 嚴格模式
 
 ES6:
 1. let 和 const關鍵字
